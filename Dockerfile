@@ -18,7 +18,8 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 && \
     curl https://download2.rstudio.org/rstudio-server-0.99.903-amd64.deb \
         -o rstudio-server-0.99.903-amd64.deb && \
     dpkg -i rstudio-server-0.99.903-amd64.deb && \
-    apt-get clean &&\ 
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/ && \
     ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin && \
     ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin && \
     Rscript -e 'install.packages("rmarkdown", dependencies=TRUE, repos="http://cran.ism.ac.jp")'
